@@ -1,18 +1,3 @@
-# Download recent 5 years of DJIA assets data from Yahoo Finance
-# Use the adjusted close price
-djia_tickers = ['AAPL', 'AMGN', 'AMZN', 'AXP', 'BA', 'CAT', 'CRM', 'CSCO', 'CVX', 'DIS', 'GS', 'HD', 
-              'HON', 'IBM', 'JNJ', 'JPM', 'KO', 'MCD', 'MMM', 'MRK', 'MSFT', 'NKE', 'NVDA', 'PG',
-              'SHW', 'TRV', 'UNH', 'V', 'VZ', 'WMT']
-# Note that the start date is inclusive but end date is exclusive
-data = yf.download(djia_tickers, start="2020-09-23", end="2025-09-24", auto_adjust=True)['Close']
-
-!mkdir 'yahoo_data'
-data.to_csv('yahoo_data/djia_5yrs.csv')
-stockFileName = 'yahoo_data/djia_5yrs.csv'
-df = pd.read_csv(stockFileName, nrows=rows, index_col=0, parse_dates=True)
-df.info()
-
-
 # Initial setup and storage with TsTables
 !pip install git+https://github.com/yhilpisch/tstables.git
 # class to use as the table description
